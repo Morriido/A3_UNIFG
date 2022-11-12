@@ -5,3 +5,6 @@ participantes: Kaio Oliveira, Maycon da Silva Alves, Kauã Moreira Viana, Emanue
 
 Entrega 1 -  27/10 = Realizada, entrega das telas de protótipo da aplicação realizadas.
 Entrega 2 -  03/11 - Realizada, entrega da implementação de classes.
+
+
+Equals para as classes
