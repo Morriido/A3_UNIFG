@@ -4,6 +4,13 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="title" type="java.lang.String" value="Login Menu - BloobBankAPP"/>
+    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[400, 300]"/>
+    </Property>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[400, 300]"/>
+    </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -32,18 +39,13 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="loginbutton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtSenha" max="32767" attributes="0"/>
-                          <Component id="txtLogin" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="253" max="32767" attributes="0"/>
+                  <Component id="loginbutton" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="txtLogin" pref="100" max="32767" attributes="0"/>
+                      <Component id="txtSenha" max="32767" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace pref="253" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -81,6 +83,11 @@
     <Component class="javax.swing.JTextField" name="txtLogin">
     </Component>
     <Component class="javax.swing.JPasswordField" name="txtSenha">
+      <Properties>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[64, 22]"/>
+        </Property>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="loginbutton">
       <Properties>

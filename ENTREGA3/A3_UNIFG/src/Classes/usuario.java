@@ -4,6 +4,9 @@
  */
 package Classes;
 
+import Telas.Menu;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author conta
@@ -14,15 +17,14 @@ public class usuario {
     public String senha;
     public int ID;
     
-    //construtores
-    public void Usuario(String login, String senha, int ID){
-        this.login = login;
-        this.senha = senha;
-        this.ID = ID;
-    }
     //funcionalidades
-    public void logar(){
-        
+    public void logar(String Usuario, String Senha, String Login, String Pass){
+        if(Usuario.equals(Login)&&Senha.equals(Pass)){
+            JOptionPane.showMessageDialog(null, "Bem Vindo");
+            new Menu().setVisible(true);
+        }else{
+            JOptionPane.showMessageDialog(null, "Login ou senha incorretos.");
+        }
     }
     public void registrar(){
         

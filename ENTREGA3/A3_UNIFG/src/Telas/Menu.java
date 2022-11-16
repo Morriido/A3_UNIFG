@@ -4,6 +4,7 @@
  */
 package Telas;
 
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -41,11 +42,11 @@ public class Menu extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tipoadd = new javax.swing.JTextField();
+        tipoadd = new javax.swing.JComboBox<>();
         jMenuBar2 = new javax.swing.JMenuBar();
         tablemenu = new javax.swing.JMenu();
         addtable = new javax.swing.JMenuItem();
-        removtable = new javax.swing.JMenuItem();
+        excluircampo = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -66,6 +67,12 @@ public class Menu extends javax.swing.JFrame {
                 "Banco de Sangue", "Doador", "Tipo Sanguineo", "Quantidade(ml)"
             }
         ));
+        tablesangue.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tablesangue.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tablesangueMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tablesangue);
 
         cadtable.setText("Cadastrar");
@@ -83,9 +90,16 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel4.setText("Quantidade");
 
+        tipoadd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" }));
+        tipoadd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoaddActionPerformed(evt);
+            }
+        });
+
         tablemenu.setText("Tabela");
 
-        addtable.setText("adicionar");
+        addtable.setText("adicionar novo campo");
         addtable.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addtableActionPerformed(evt);
@@ -93,8 +107,13 @@ public class Menu extends javax.swing.JFrame {
         });
         tablemenu.add(addtable);
 
-        removtable.setText("remover");
-        tablemenu.add(removtable);
+        excluircampo.setText("excluir campo selecionado");
+        excluircampo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                excluircampoActionPerformed(evt);
+            }
+        });
+        tablemenu.add(excluircampo);
 
         jMenuBar2.add(tablemenu);
 
@@ -108,6 +127,7 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cadtable)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
@@ -119,16 +139,15 @@ public class Menu extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(doadoradd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2)))
-                    .addComponent(cadtable))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(tipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(quantadd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(tipoadd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(quantadd, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -163,11 +182,29 @@ public class Menu extends javax.swing.JFrame {
     private void cadtableActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadtableActionPerformed
         DefaultTableModel tabelaBanco = (DefaultTableModel) tablesangue.getModel();
         Object[] dados = new Object[]{
-            bancoadd.getText(),doadoradd.getText(),tipoadd.getText(),quantadd.getText()
+            bancoadd.getText(),doadoradd.getText(),tipoadd.getSelectedItem() ,quantadd.getText()
         };
         tabelaBanco.addRow(dados);
         
     }//GEN-LAST:event_cadtableActionPerformed
+
+    private void tipoaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoaddActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoaddActionPerformed
+
+    private void excluircampoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_excluircampoActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel tabelaBanco = (DefaultTableModel) tablesangue.getModel();
+        if(tablesangue.getSelectedRow()!=-1){
+            tabelaBanco.removeRow(tablesangue.getSelectedRow());
+        }else{
+            JOptionPane.showMessageDialog(null,"Selecione uma linha para ser excluida");
+        }
+    }//GEN-LAST:event_excluircampoActionPerformed
+
+    private void tablesangueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablesangueMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tablesangueMouseClicked
 
     /**
      * @param args the command line arguments
@@ -209,6 +246,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JTextField bancoadd;
     private javax.swing.JButton cadtable;
     private javax.swing.JTextField doadoradd;
+    private javax.swing.JMenuItem excluircampo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -219,9 +257,8 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField quantadd;
-    private javax.swing.JMenuItem removtable;
     private javax.swing.JMenu tablemenu;
     private javax.swing.JTable tablesangue;
-    private javax.swing.JTextField tipoadd;
+    private javax.swing.JComboBox<String> tipoadd;
     // End of variables declaration//GEN-END:variables
 }
