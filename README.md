@@ -7,4 +7,4 @@ Entrega 1 -  27/10 = Realizada, entrega das telas de protótipo da aplicação r
 Entrega 2 -  03/11 - Realizada, entrega da implementação de classes.
 
 
-Equals para as classes
+OBS para professores: a Entrega 4 sera em zip, para facilitar o download do projeto. (a versao atual da entrega 4 não é a final, estaremos alterando).
